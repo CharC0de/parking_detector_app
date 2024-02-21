@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640041135404",
+    "project_id": "pserv-be-ch4r",
+    "storage_bucket": "pserv-be-ch4r.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640041135404:android:12f42e70a0831f57e15089",
+        "android_client_info": {
+          "package_name": "com.example.parking_detector_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFIxDnCLcA7PwzyhC6px0s5IStupoLwh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
