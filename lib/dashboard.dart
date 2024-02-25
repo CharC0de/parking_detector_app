@@ -212,7 +212,8 @@ class _DashboardState extends State<Dashboard> {
               itemBuilder: (context) {
                 debugPrint(userData['type']);
                 List<PopupMenuItem<String>> menuItems = [
-                  const PopupMenuItem(value: 'rent', child: Text('Your Rents')),
+                  const PopupMenuItem(
+                      value: 'rent', child: Text('Your Reservations')),
                 ];
 
                 if (userData['type'] != 'owner') {
@@ -222,8 +223,7 @@ class _DashboardState extends State<Dashboard> {
                   menuItems.add(const PopupMenuItem(
                       value: 'parking', child: Text('Your Parking Lots')));
                   menuItems.add(const PopupMenuItem(
-                      value: 'reservations',
-                      child: Text('Parking Reservation')));
+                      value: 'reservations', child: Text('User Reservations')));
                 }
                 return menuItems;
               },

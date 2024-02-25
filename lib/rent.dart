@@ -20,6 +20,7 @@ class _RentState extends State<Rent> {
           parkingData.forEach((key, value) {
             if (value['parkingrequests'] != null) {
               value['parkingrequests'].forEach((id, val) {
+                var parkingId = key;
                 var parkingName = value['name'];
                 var ownerName = value['userData']['username'];
 
@@ -31,6 +32,7 @@ class _RentState extends State<Rent> {
                   var rate = value['motorHRate'];
                   val['rate'] = rate;
                 }
+                val['parkingId'] = parkingId;
                 val['parkingName'] = parkingName;
                 val['ownerName'] = ownerName;
                 reserveData[id] = val;
@@ -93,7 +95,7 @@ class _RentState extends State<Rent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Rents'),
+        title: const Text('Your Reservations'),
       ),
       body: ListView.builder(
         itemCount: reserveData.length,
@@ -144,9 +146,19 @@ class _RentState extends State<Rent> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(rent['state'],
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w700)),
+                          rent['state'] == 'ongoing'
+                              ? Text(rent['state'],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w700))
+                              : TextButton(
+                                  child: const Text('Cancel'),
+                                  onPressed: () async {
+                                    await dbref
+                                        .child(
+                                            'parkinglots/${rent['parkingId']}/parkingrequests/$rentId')
+                                        .update({'state': "cancelled"});
+                                  },
+                                ),
                         ],
                       )
                     ]),
